@@ -6,7 +6,7 @@ async function get_pg_connection(req,res){
         password: 'root',
         host: 'localhost',
         port: 5432,
-        database: 'class_management_system',
+        database: 'cms_new',
     };
     const client = new Client(x);
 
