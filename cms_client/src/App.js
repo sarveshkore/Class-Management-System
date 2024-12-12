@@ -1,11 +1,14 @@
 import './App.css';
-import SignUp from './Components/SignUp';
+import Student from './Components/Students/Student'
+import Navbar from './Components/Navbar';
+import Header from './Components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Body from './Components/Body';
 function App() {
   return (
     <div className="App">
-      <h1 className='text-danger'>Hello this is Class Management System</h1>
-      <SignUp/>
+      <Header/>
+      <Body/>
     </div>
   );
 }
