@@ -1,9 +1,7 @@
 import './App.css';
-import Student from './Components/Students/Student'
-import Navbar from './Components/Navbar';
-import Header from './Components/Header';
+import Header from './Components/Main/Header';
+import Body from './Components/Main/Body';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Body from './Components/Body';
 function App() {
   return (
     <div className="App">
@@ -14,3 +12,21 @@ function App() {
 }
 
 export default App;
+
+
+// import './App.css';
+// import Header from './Components/Main/Header';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Outlet } from 'react-router-dom';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <Header />
+//       {/* Render child routes */}
+//       <Outlet />
+//     </div>
+//   );
+// }
+
+// export default App;

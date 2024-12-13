@@ -19,7 +19,7 @@ async function main(req, res) {
     `;
 
     const result = await client.query(query);
-    console.log(`Data fetched successfully: ${JSON.stringify(result.rows, null, 2)}`);
+    // console.log(`Data fetched successfully: ${JSON.stringify(result.rows, null, 2)}`);
     res.status(200).send(result.rows);
 
     client.end();

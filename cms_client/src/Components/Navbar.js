@@ -1,18 +1,4 @@
-// import React from 'react'
 
-// const Navbar = () => {
-//   return (
-//     <div className='sidenavbar'>
-//         <ul>
-//             <li>
-//                 <a href="/home">ha</a>
-//             </li>
-//         </ul>
-//     </div>
-//   )
-// }
-
-// export default Navbar
 import React from 'react';
 
 const Navbar = () => {
