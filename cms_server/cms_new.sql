@@ -9,7 +9,7 @@ select * from branch;
 
 create table standard(id serial primary key, std int unique not null);
 insert into standard(std) values(11),(12);
-
+select * from standard;
 -- create table topic (id serial primary key, topic varchar(255), subject_id int references subject(id)unique not null);
 
 create table stream(id serial primary key, stream varchar(255)unique not null);
