@@ -17,7 +17,7 @@ const Student_Data = () => {
   return (
     
     <div>
-      <SearchBar/>
+      {/* <SearchBar/> */}
       <table className="table table-striped table-bordered">
         <thead className="table-dark">
           <tr>
@@ -59,16 +59,3 @@ const Student_Data = () => {
 }
 
 export default Student_Data
-
-
-// import React from 'react'
-
-// const Staff = () => {
-//   return (
-//     <div>
-//       <h1>This is Staff Data</h1>
-//     </div>
-//   )
-// }
-
-// export default Staff

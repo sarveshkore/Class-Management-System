@@ -1,4 +1,4 @@
-import SearchBar from '../SearchBar';
+// import SearchBar from '../SearchBar';
 import Student_Data from './Student_Data';
 
 const Student = () => {
@@ -7,7 +7,7 @@ const Student = () => {
   return (
     <div className="container mt-4">
       <h1 className="text-center mb-4">Student List</h1>      
-      <SearchBar/>
+      {/* <SearchBar/> */}
       <Student_Data/>
     </div>
   );
