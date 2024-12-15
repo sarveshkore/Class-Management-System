@@ -4,4 +4,5 @@ module.exports = function (app) {
     require('./branch')(app);
     require('./standard')(app);
     require('./entrance')(app);
+    require('./stream')(app);
 };
