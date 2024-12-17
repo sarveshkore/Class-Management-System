@@ -59,7 +59,7 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const StaffModal = ({ setShowModal, staff }) => {
   const [staffData, setStaffData] = useState({
@@ -68,6 +68,15 @@ const StaffModal = ({ setShowModal, staff }) => {
     mobile: staff.staff_mobile || '',
     subject: staff.subject_name || '',
   });
+  const [subject,setSubject]=useState([]);
+
+  useEffect(()=>{
+    const fetchDropdownData = async()=>{
+      const subjectResponse=await fetch('http://localhost:9999/subject_crud/read_subject/');
+      const subjectData = await subjectResponse.json();
+      setSubject(subjectData);
+    }
+  })
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -127,7 +136,7 @@ const StaffModal = ({ setShowModal, staff }) => {
             className="form-control"
           />
         </div>
-        <div className="p-2">
+        {/* <div className="p-2">
           <label>Subject</label>
           <input
             type="text"
@@ -136,6 +145,21 @@ const StaffModal = ({ setShowModal, staff }) => {
             onChange={handleInputChange}
             className="form-control"
           />
+        </div> */}
+        <div className="p-2">
+          <label>Subject:</label>
+          <select
+            name="stream_name"
+            value={subject.subject}
+            // onChange={handleChange}
+            className="form-control"          >
+            <option value="">Select Subject</option>
+            {subject.map((subject) => (
+              <option key={subject.id} value={subject.subject}>
+                {subject.subject}
+              </option>
+            ))}
+          </select>
         </div>
       </form>
       <button type="button" className="btn btn-success mt-3" onClick={handleUpdate}>

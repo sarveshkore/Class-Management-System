@@ -3,6 +3,7 @@ import Student from "../Students/Student";
 import Navbar from "../Navbar";
 import StaffData from "../Staff/StaffData";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./Home";
 
 const Body = () => {
   return (
@@ -16,7 +17,8 @@ const Body = () => {
         </div>
         <div className="flex-grow-1 p-4">
           <Routes>
-            <Route path="/" element={<Student />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/student" element={<Student />} />
             <Route path="/staff" element={<StaffData />} />
             
           </Routes>

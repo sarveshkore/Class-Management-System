@@ -5,4 +5,5 @@ module.exports = function (app) {
     require('./standard')(app);
     require('./entrance')(app);
     require('./stream')(app);
+    require('./subject')(app);
 };

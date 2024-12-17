@@ -21,6 +21,7 @@ insert into subject(subject,stream_id) values('physics',1),('chemistry',1),('bil
 
 select * from subject;
 
+
 create table entrance(id serial primary key, entrance varchar(255)unique not null,stream_id int references stream(id) );
 insert into entrance(entrance,stream_id) values ('jee',1),('neet',1),('cet-engineering',1),('cet-medical',1);
 insert into entrance(entrance,stream_id) values('no entrance',1);

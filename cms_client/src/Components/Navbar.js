@@ -7,6 +7,11 @@ const Navbar = () => {
     <ul className="nav flex-column p-3">
       <li className="nav-item mb-2">
         <Link to="/" className="nav-link text-white">
+          Home
+        </Link>
+      </li>
+      <li className="nav-item mb-2">
+        <Link to="/student" className="nav-link text-white">
           Students
         </Link>
       </li>
@@ -15,36 +20,36 @@ const Navbar = () => {
           Staff
         </Link>
       </li>
-      {/* <li className="nav-item mb-2">
-        <NavLink to="" className="nav-link text-white">
+      <li className="nav-item mb-2">
+        <Link to="/" className="nav-link text-white">
           Admissions
-        </NavLink>
+        </Link>
       </li>
       <li className="nav-item mb-2">
-        <NavLink to="" className="nav-link text-white">
+        <Link to="/" className="nav-link text-white">
           Attendance
-        </NavLink>
+        </Link>
       </li>
       <li className="nav-item mb-2">
-        <NavLink to="" className="nav-link text-white">
+        <Link to="/" className="nav-link text-white">
           Stream
-        </NavLink>
+        </Link>
       </li>
       <li className="nav-item mb-2">
-        <NavLink to=""  className="nav-link text-white">
+        <Link to="/"  className="nav-link text-white">
           Subjects
-        </NavLink>
+        </Link>
       </li>
       <li className="nav-item mb-2">
-        <NavLink to=""  className="nav-link text-white">
+        <Link to="/"  className="nav-link text-white">
           Branches
-        </NavLink>
+        </Link>
       </li>
       <li className="nav-item">
-        <NavLink to="" className="nav-link text-white">
+        <Link to="/" className="nav-link text-white">
           Reports
-        </NavLink>
-      </li> */}
+        </Link>
+      </li>
     </ul>
   );
 };
