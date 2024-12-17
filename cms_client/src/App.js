@@ -1,18 +1,18 @@
-import './App.css';
-import Header from './Components/Main/Header';
-import Body from './Components/Main/Body';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
+import Header from "./Components/Main/Header";
+// import Body from "./Components/Main/Body";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Body from "./Components/Main/Body";
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <Body/>
     </div>
   );
 }
 
 export default App;
-
 
 // import './App.css';
 // import Header from './Components/Main/Header';

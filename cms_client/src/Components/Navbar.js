@@ -1,49 +1,50 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <ul className="nav flex-column p-3">
       <li className="nav-item mb-2">
-        <a href="#students" className="nav-link text-white">
+        <Link to="/" className="nav-link text-white">
           Students
-        </a>
+        </Link>
       </li>
       <li className="nav-item mb-2">
-        <a href="#staff" className="nav-link text-white">
+        <Link to="/staff" className="nav-link text-white">
           Staff
-        </a>
+        </Link>
       </li>
-      <li className="nav-item mb-2">
-        <a href="#admissions" className="nav-link text-white">
+      {/* <li className="nav-item mb-2">
+        <NavLink to="" className="nav-link text-white">
           Admissions
-        </a>
+        </NavLink>
       </li>
       <li className="nav-item mb-2">
-        <a href="#attendance" className="nav-link text-white">
+        <NavLink to="" className="nav-link text-white">
           Attendance
-        </a>
+        </NavLink>
       </li>
       <li className="nav-item mb-2">
-        <a href="#courses" className="nav-link text-white">
+        <NavLink to="" className="nav-link text-white">
           Stream
-        </a>
+        </NavLink>
       </li>
       <li className="nav-item mb-2">
-        <a href="#subjects" className="nav-link text-white">
+        <NavLink to=""  className="nav-link text-white">
           Subjects
-        </a>
+        </NavLink>
       </li>
       <li className="nav-item mb-2">
-        <a href="#branches" className="nav-link text-white">
+        <NavLink to=""  className="nav-link text-white">
           Branches
-        </a>
+        </NavLink>
       </li>
       <li className="nav-item">
-        <a href="#reports" className="nav-link text-white">
+        <NavLink to="" className="nav-link text-white">
           Reports
-        </a>
-      </li>
+        </NavLink>
+      </li> */}
     </ul>
   );
 };
