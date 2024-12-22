@@ -16,8 +16,14 @@ const Student_Data = () => {
     fetchData();
   }, []);
 
-  const handleEdit = (student) => {
-    setSelectedStudent(student);
+  const handleEdit = async (student) => {
+    const response = await fetch('http://localhost:9999/student_details_crud/read_student_single/');
+    const data = await response.json();
+    console.log("data",data)
+    data.map((dataSingle)=>{
+      setSelectedStudent(dataSingle);
+
+    })
     setShowModal(true);
   };
 
@@ -50,7 +56,7 @@ const Student_Data = () => {
                 <td>
                   <button
                     className="btn btn-primary btn-sm me-2"
-                    onClick={() => handleEdit(student)}
+                    onClick={() => handleEdit(student.id)}
                   >
                     Edit
                   </button>

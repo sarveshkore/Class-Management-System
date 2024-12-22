@@ -40,7 +40,6 @@ CREATE TABLE student_details (
 	entrance_id int references entrance(id),
 	stream_id int references stream(id)
 );
-drop table student_details cascade;
 select * from student_details;
 
 create table staff_details(

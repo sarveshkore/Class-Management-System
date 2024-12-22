@@ -144,6 +144,8 @@
 import React, { useState, useEffect } from 'react';
 
 const StudentModal = ({ student, setShowModal }) => {
+  console.log(student)
+
   const [branches, setBranches] = useState([]);
   const [standards, setStandards] = useState([]);
   const [entrances, setEntrances] = useState([]);
@@ -158,6 +160,8 @@ const StudentModal = ({ student, setShowModal }) => {
     entrance_name: student.entrance_name,
     stream_name: student.stream_name,
   });
+
+  console.log(updatedStudent)
 
   useEffect(() => {
     const fetchDropdownData = async () => {
@@ -187,29 +191,24 @@ const StudentModal = ({ student, setShowModal }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUpdatedStudent({ ...updatedStudent, [name]: value });
+    // setUpdatedStudent({ ...updatedStudent, [name]: value });
   };
 
-  const handleSaveChanges = async () => {
-    try {
-      const response = await fetch('http://localhost:9999/student_details_crud/update_student/${formData.id}', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(updatedStudent),
-      });
-
-      if (response.ok) {
-        alert('Student details updated successfully!');
-        setShowModal(false);
-      } else {
-        alert('Failed to update student details.');
-      }
-    } catch (error) {
-      console.error('Error updating student details:', error);
-      alert('An error occurred while updating student details.');
-    }
+  const handleSaveChanges = async (student_id) => {
+    // try {
+    //   const response = await fetch('http://localhost:9999/student_details_crud/read_student_single/');
+    //   const data = await response.json();
+    //   console.log(data)
+    //   // if (response.ok) {
+    //   //   alert('Student details updated successfully!');
+    //   //   setShowModal(false);
+    //   // } else {
+    //   //   alert('Failed to update student details.');
+    //   // }
+    // } catch (error) {
+    //   console.error('Error updating student details:', error);
+    //   alert('An error occurred while updating student details.');
+    // }
   };
 
   
@@ -233,7 +232,7 @@ const StudentModal = ({ student, setShowModal }) => {
           <input
             type="text"
             name="student_name"
-            value={updatedStudent.student_name}
+            // value={updatedStudent.student_name}
             onChange={handleChange}
             className="form-control"
           />
@@ -243,7 +242,7 @@ const StudentModal = ({ student, setShowModal }) => {
           <input
             type="email"
             name="student_email"
-            value={updatedStudent.student_email}
+            // value={updatedStudent.student_email}
             onChange={handleChange}
             className="form-control"
           />
@@ -253,7 +252,7 @@ const StudentModal = ({ student, setShowModal }) => {
           <input
             type="text"
             name="student_mobile"
-            value={updatedStudent.student_mobile}
+            // value={updatedStudent.student_mobile}
             onChange={handleChange}
             className="form-control"
           />
@@ -264,16 +263,16 @@ const StudentModal = ({ student, setShowModal }) => {
           <label>Branch:</label>
           <select
             name="branch_name"
-            value={updatedStudent.branch_name}
+            // value={updatedStudent.branch_name}
             onChange={handleChange}
             className="form-control"
           >
-            <option value="">Select Branch</option>
+            {/* <option value="">Select Branch</option>
             {branches.map((branch) => (
               <option key={branch.id} value={branch.branch}>
                 {branch.branch}
               </option>
-            ))}
+            ))} */}
           </select>
         </div>
 
@@ -282,16 +281,16 @@ const StudentModal = ({ student, setShowModal }) => {
           <label>Standard:</label>
           <select
             name="standard_name"
-            value={updatedStudent.standard_name}
+            // value={updatedStudent.standard_name}
             onChange={handleChange}
             className="form-control"
           >
-            <option value="">Select Standard</option>
+            {/* <option value="">Select Standard</option>
             {standards.map((standard) => (
               <option key={standard.id} value={standard.std}>
                 {standard.std}
               </option>
-            ))}
+            ))} */}
           </select>
         </div>
 
@@ -300,16 +299,16 @@ const StudentModal = ({ student, setShowModal }) => {
           <label>Entrance:</label>
           <select
             name="entrance_name"
-            value={updatedStudent.entrance_name}
+            // value={updatedStudent.entrance_name}
             onChange={handleChange}
             className="form-control"
           >
-            <option value="">Select Entrance</option>
+            {/* <option value="">Select Entrance</option>
             {entrances.map((entrance) => (
               <option key={entrance.id} value={entrance.entrance}>
                 {entrance.entrance}
               </option>
-            ))}
+            ))} */}
           </select>
         </div>
 
@@ -318,20 +317,20 @@ const StudentModal = ({ student, setShowModal }) => {
           <label>Stream:</label>
           <select
             name="stream_name"
-            value={updatedStudent.stream_name}
+            // value={updatedStudent.stream_name}
             onChange={handleChange}
             className="form-control"
           >
-            <option value="">Select Stream</option>
+            {/* <option value="">Select Stream</option>
             {streams.map((stream) => (
               <option key={stream.id} value={stream.stream}>
                 {stream.stream}
               </option>
-            ))}
+            ))} */}
           </select>
         </div>
 
-        <button type="button" className="btn btn-success mt-3 me-3" onClick={handleSaveChanges}>
+        <button type="button" className="btn btn-success mt-3 me-3" onClick={handleSaveChanges()}>
           Save Changes
         </button>
         <button type="button" className="btn btn-danger mt-3" onClick={() => setShowModal(false)}>
