@@ -11,13 +11,14 @@ const Student_Data = () => {
       const response = await fetch('http://localhost:9999/student_details_crud/read_student/');
       const data = await response.json();
       setStudents(data);
+      console.log(data)
     };
 
     fetchData();
   }, []);
 
   const handleEdit = async (student) => {
-    const response = await fetch('http://localhost:9999/student_details_crud/read_student_single/');
+    const response = await fetch(`http://localhost:9999/student_details_crud/read_student_single/2`);
     const data = await response.json();
     console.log("data",data)
     data.map((dataSingle)=>{
