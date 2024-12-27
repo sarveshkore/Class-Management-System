@@ -40,7 +40,9 @@ CREATE TABLE student_details (
 	entrance_id int references entrance(id),
 	stream_id int references stream(id)
 );
-select * from student_details;
+select * from student_details ;
+
+alter table student_details add column isDeleted int default 0;
 
 create table staff_details(
 	id serial primary key,
@@ -59,6 +61,7 @@ select * from subject;
 SELECT sd.student_name, sd.student_email, sd.student_mobile, b.branch AS branch_name, s.std AS standard_name, e.entrance 
 	AS entrance_name, st.stream AS stream_name 
 		FROM student_details sd JOIN branch b ON sd.branch_id = b.id JOIN 
-			standard s ON sd.standard_id = s.id JOIN entrance e ON sd.entrance_id = e.id JOIN stream st ON sd.stream_id = st.id;
+			standard s ON sd.standard_id = s.id JOIN entrance e ON sd.entrance_id = e.id JOIN stream st ON sd.stream_id = st.id
+			where isDeleted=0;
 
 
