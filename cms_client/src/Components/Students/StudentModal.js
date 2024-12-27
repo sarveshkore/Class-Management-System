@@ -59,7 +59,7 @@ const StudentModal = ({ setShowModal }) => {
 let data = [];
   const handleSaveChanges = async (student_id) => {
     try {
-      const response = await fetch('http://localhost:9999/student_details_crud/read_student_single/2');
+      const response = await fetch('http://localhost:9999/student_details_crud/read_single_student/:id');
       data = await response.json();
       console.log('data : ', data[0].student_name);
       setStudent()

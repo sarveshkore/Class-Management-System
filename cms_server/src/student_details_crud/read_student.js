@@ -4,6 +4,7 @@ async function main(req, res) {
 
     const query = `
         SELECT 
+            sd.id,
             sd.student_name, 
             sd.student_email, 
             sd.student_mobile, 

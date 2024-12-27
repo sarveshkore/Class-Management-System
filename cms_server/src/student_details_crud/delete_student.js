@@ -10,7 +10,15 @@ async function main(req, res) {
     const values = [id];
     
     const result = await client.query(query,values);
-    res.send(`Data deleted successfully: ${JSON.stringify(result)}`);
+    // console.log(result)
+    let response={
+        "status": "success",
+        "message": "Student deleted successfully",
+        // "data": result.rows,
+        
+    }
+    res.send(response);
+    
 
     client.end();
 }
