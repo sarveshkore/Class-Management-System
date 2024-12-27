@@ -11,6 +11,11 @@ module.exports = function (app) {
         // console.log('Module loaded:', x);
         x.main(req, res); 
     });
+    app.get('/branch_crud/read_single_branch/:id', (req, res) => {
+        const x = require('../src/branch_crud/read_single_branch'); 
+        // console.log('Module loaded:', x);
+        x.main(req, res); 
+    });
     app.put('/branch_crud/update_branch/:id', (req, res) => {
         const x = require('../src/branch_crud/update_branch'); 
         // console.log('Module loaded:', x);

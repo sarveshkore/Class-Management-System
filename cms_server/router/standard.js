@@ -11,6 +11,11 @@ module.exports = function (app) {
         // console.log('Module loaded:', x);
         x.main(req, res); 
     });
+    app.get('/standard_crud/read_single_standard/:id', (req, res) => {
+        const x = require('../src/standard_crud/read_single_standard'); 
+        // console.log('Module loaded:', x);
+        x.main(req, res); 
+    });
     app.put('/standard_crud/update_standard/:id', (req, res) => {
         const x = require('../src/standard_crud/update_standard'); 
         // console.log('Module loaded:', x);

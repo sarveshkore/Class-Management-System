@@ -11,6 +11,11 @@ module.exports = function (app) {
         // console.log('Module loaded:', x);
         x.main(req, res); 
     });
+    app.get('/entrance_crud/read_single_entrance/:id', (req, res) => {
+        const x = require('../src/entrance_crud/read_single_entrance'); 
+        // console.log('Module loaded:', x);
+        x.main(req, res); 
+    });
     app.put('/entrance_crud/update_entrance/:id', (req, res) => {
         const x = require('../src/entrance_crud/update_entrance'); 
         // console.log('Module loaded:', x);

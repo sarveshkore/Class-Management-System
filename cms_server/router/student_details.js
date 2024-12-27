@@ -11,8 +11,8 @@ module.exports = function (app) {
         // console.log('Module loaded:', x);
         x.main(req, res); 
     });
-    app.get('/student_details_crud/read_student_single/:id', (req, res) => {
-        const x = require('../src/student_details_crud/read_student_single'); 
+    app.get('/student_details_crud/read_single_student/:id', (req, res) => {
+        const x = require('../src/student_details_crud/read_single_student'); 
         // console.log('Module loaded:', x);
         x.main(req, res); 
     });
