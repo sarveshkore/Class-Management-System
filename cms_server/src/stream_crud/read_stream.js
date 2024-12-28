@@ -3,7 +3,7 @@ async function main(req, res) {
     let client = await get_pg_connection();
 
     const query = `
-        SELECT * from stream
+        SELECT * from stream where isDeleted=0;
     `;
 
     const result = await client.query(query);

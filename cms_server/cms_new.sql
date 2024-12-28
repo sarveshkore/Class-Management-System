@@ -1,20 +1,27 @@
 create table role (id serial primary key, role varchar(255) unique not null);
 insert into role(role) values('student'),('teacher');
 select * from role;
-
+alter table role add column isDeleted int default 0;
+update role set isDeleted=1 where id=2;
 
 create table branch(id serial primary key, branch varchar(255) unique unique not null);
 insert into branch(branch) values('ghatkopar'),('vikhroli'),('mulund'),('bhandup');
 select * from branch;
+alter table branch add column isDeleted int default 0;
+update  branch set isDeleted=1 where id=2;
 
 create table standard(id serial primary key, std int unique not null);
 insert into standard(std) values(11),(12);
 select * from standard;
+alter table standard add column isDeleted int default 0;
+
+
 -- create table topic (id serial primary key, topic varchar(255), subject_id int references subject(id)unique not null);
 
 create table stream(id serial primary key, stream varchar(255)unique not null);
 insert into stream(stream) values('science');
 select * from stream;
+alter table stream add column isDeleted int default 0;
 
 create table subject(id serial primary key, subject varchar(255)unique not null, stream_id int references stream(id));
 insert into subject(subject,stream_id) values('physics',1),('chemistry',1),('bilolgy',1),('mathematics',1);
@@ -26,6 +33,7 @@ create table entrance(id serial primary key, entrance varchar(255)unique not nul
 insert into entrance(entrance,stream_id) values ('jee',1),('neet',1),('cet-engineering',1),('cet-medical',1);
 insert into entrance(entrance,stream_id) values('no entrance',1);
 select * from entrance;
+alter table entrance add column isDeleted int default 0;
 
 
 
@@ -52,6 +60,9 @@ create table staff_details(
 	role_id INT REFERENCES role(id),
 	subject_id int references subject(id)
 );
+alter table staff_details add column isDeleted int default 0;
+update staff_details set isDeleted=1 where id=4;
+
 select * from staff_details;
 select * from subject;
 
@@ -63,5 +74,6 @@ SELECT sd.student_name, sd.student_email, sd.student_mobile, b.branch AS branch_
 		FROM student_details sd JOIN branch b ON sd.branch_id = b.id JOIN 
 			standard s ON sd.standard_id = s.id JOIN entrance e ON sd.entrance_id = e.id JOIN stream st ON sd.stream_id = st.id
 			where isDeleted=0;
+
 
 

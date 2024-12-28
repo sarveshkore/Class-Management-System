@@ -3,10 +3,13 @@ async function main(req, res) {
     const { get_pg_connection } = require('../base_communication/pg_connector');
     let client = await get_pg_connection();
 
-    const query = `
-        delete from entrance WHERE id = $1
-    `;
+    // const query = `
+    //     delete from entrance WHERE id = $1
+    // `;
 
+    const query = `
+    update entrance set isDeleted=1 where id=$1;
+    `;
     const values = [id];
     
     const result = await client.query(query,values);

@@ -3,7 +3,7 @@ async function main(req, res) {
     let client = await get_pg_connection();
 
     const query = `
-        SELECT * from subject
+        SELECT * from subject where isDeleted=0;
     `;
 
     const result = await client.query(query);

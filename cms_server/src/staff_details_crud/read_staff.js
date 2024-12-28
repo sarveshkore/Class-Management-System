@@ -15,6 +15,7 @@ async function main(req, res) {
             role r ON sd.role_id = r.id
         JOIN 
             subject s ON sd.subject_id = s.id
+            where isDeleted=0;
     `;
 
     const result = await client.query(query);

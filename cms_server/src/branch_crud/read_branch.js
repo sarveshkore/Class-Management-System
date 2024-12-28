@@ -3,7 +3,7 @@ async function main(req, res) {
     let client = await get_pg_connection();
 
     const query = `
-        SELECT branch from branch;
+        SELECT branch from branch where isDeleted=0;;
     `;
 
     const result = await client.query(query);
