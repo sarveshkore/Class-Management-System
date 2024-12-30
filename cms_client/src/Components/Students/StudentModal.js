@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-const StudentModal = ({ setShowModal }) => {
+const StudentModal = ({ setShowModal,student_data_prop }) => {
   // console.log(student)
 
-  // const [branches, setBranches] = useState([]);
+  const [branches, setBranches] = useState([]);
   // const [standards, setStandards] = useState([]);
   // const [entrances, setEntrances] = useState([]);
   // const [streams, setStreams] = useState([]);
@@ -19,14 +19,16 @@ const StudentModal = ({ setShowModal }) => {
   // });
   const [student,setStudent]=useState('');
 
-  // console.log(updatedStudent)
+  console.log("branches",branches)
+  console.log("student",student)
 
   useEffect(() => {
     const fetchDropdownData = async () => {
       try {
         const branchResponse = await fetch('http://localhost:9999/branch_crud/read_branch/');
         const branchData = await branchResponse.json();
-        // setBranches(branchData);
+        console.log('branch data : ',branchData)
+        setBranches(branchData);
 
         const standardResponse = await fetch('http://localhost:9999/standard_crud/read_standard/');
         const standardData = await standardResponse.json();
@@ -43,7 +45,7 @@ const StudentModal = ({ setShowModal }) => {
         console.error('Error fetching dropdown data:', error);
       }
     };
-
+    
     fetchDropdownData();
   }, []);
 
@@ -57,12 +59,13 @@ const StudentModal = ({ setShowModal }) => {
   //   // setUpdatedStudent({ ...updatedStudent, [name]: value });
   // };
 let data = [];
-  const handleSaveChanges = async (student_id) => {
+  const handleSaveChanges = async (id) => {
     try {
-      const response = await fetch('http://localhost:9999/student_details_crud/read_single_student/:id');
-      data = await response.json();
-      console.log('data : ', data[0].student_name);
-      setStudent()
+      const response = await fetch(`http://localhost:9999/student_details_crud/read_single_student/${id}`);
+      let response_data = await response.json();
+      console.log('response_data : ', response_data);
+      console.log('response_data[0] : ', response_data[0]);
+      setStudent(response_data[0])
       // if (response.ok) {
         //   alert('Student details updated successfully!');
         //   setShowModal(false);
@@ -125,22 +128,29 @@ let data = [];
         </div>
 
         {/* Branch Dropdown */}
-        {/* <div className="p-2">
+        <div className="p-2">
           <label>Branch:</label>
           <select
             name="branch_name"
-            // value={data[0].branch_name}
+            value={student_data_prop?.branch_id}
             onChange={handleChange}
             className="form-control"
-          > */}
-            {/* <option value="">Select Branch</option>
-            {branches.map((branch) => (
-              <option key={branch.id} value={branch.branch}>
-                {branch.branch}
-              </option>
-            ))} */}
-          {/* </select>
-        </div> */}
+          >
+            {console.log("student_data_prop",student_data_prop)}
+            <option value="">Select Branch</option>
+            {branches.map((branchData) => (
+                branchData.id == student?.branch_id ?  <option key={branchData.id} selected value={branchData.branch}>
+                {branchData.branch}
+              </option>:
+              <option key={branchData.id} value={branchData.branch}>
+              {branchData.branch}
+            </option>
+              // <option key={branchData.id} value={branchData.branch}>
+              //   {branchData.branch}
+              // </option>
+            ))}
+          </select>
+        </div>
 
         {/* Standard Dropdown */}
         {/* <div className="p-2">
@@ -197,7 +207,7 @@ let data = [];
           {/* </select>
         </div>  */}
 
-        <button type="button" className="btn btn-success mt-3 me-3" onClick={handleSaveChanges()}>
+        <button type="button" className="btn btn-success mt-3 me-3" onClick={()=>{handleSaveChanges()}}>
           Save Changes
         </button>
         <button type="button" className="btn btn-danger mt-3" onClick={() => setShowModal(false)}>

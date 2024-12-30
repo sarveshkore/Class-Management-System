@@ -17,7 +17,7 @@ async function main(req, res) {
         JOIN standard s ON sd.standard_id = s.id
         JOIN entrance e ON sd.entrance_id = e.id
         JOIN stream st ON sd.stream_id = st.id
-        where isDeleted=0;
+        where sd.isDeleted=0;
     `;
 
     const result = await client.query(query);

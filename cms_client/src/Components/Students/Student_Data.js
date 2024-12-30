@@ -26,12 +26,13 @@ const Student_Data = () => {
   const handleEdit = async (student) => {
     const response = await fetch(`http://localhost:9999/student_details_crud/read_single_student/${student}`);
     const data = await response.json();
-    console.log("data",data)
+    console.log("data test new",data)
+    setSelectedStudent(data[0]);
     // eslint-disable-next-line array-callback-return
-    data.map( (dataSingle) => {
-      setSelectedStudent(dataSingle);
+    // data.map( (dataSingle) => {
+    //   setSelectedStudent(dataSingle);
 
-    })
+    // })
     setShowModal(true);
   };
 
