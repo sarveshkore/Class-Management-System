@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import StudentModal from './StudentModal';
 import { ReadStudent } from '../../hooks/ReadStudent';
 // import axios from 'axios';
 
 const Student_Data = () => {
   const [students, setStudents] = useState([]);
+  const studentDataTestRef = useRef({});
   const[count,setCount]=useState(1)
   const [showModal, setShowModal] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState();
@@ -27,7 +28,9 @@ const Student_Data = () => {
     const response = await fetch(`http://localhost:9999/student_details_crud/read_single_student/${student}`);
     const data = await response.json();
     console.log("data test new",data)
-    setSelectedStudent(data[0]);
+    // setSelectedStudent(data[0]);
+    console.log("studentDataTestRef",studentDataTestRef)
+    studentDataTestRef.current=data[0];
     // eslint-disable-next-line array-callback-return
     // data.map( (dataSingle) => {
     //   setSelectedStudent(dataSingle);
@@ -49,7 +52,7 @@ const Student_Data = () => {
   }
   
   return (
-    <div>
+    <div >
       <table className="table table-striped table-bordered">
         <thead className="table-dark">
           <tr>
@@ -105,7 +108,8 @@ const Student_Data = () => {
 
       {showModal && 
            <StudentModal
-          student={selectedStudent}
+          // student={selectedStudent}
+          student_data_prop={studentDataTestRef.current}
           setShowModal={setShowModal}
         />
       }

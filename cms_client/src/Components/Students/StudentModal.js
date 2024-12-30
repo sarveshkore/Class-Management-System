@@ -4,7 +4,7 @@ const StudentModal = ({ setShowModal,student_data_prop }) => {
   // console.log(student)
 
   const [branches, setBranches] = useState([]);
-  // const [standards, setStandards] = useState([]);
+  const [standards, setStandards] = useState([]);
   // const [entrances, setEntrances] = useState([]);
   // const [streams, setStreams] = useState([]);
 
@@ -32,7 +32,7 @@ const StudentModal = ({ setShowModal,student_data_prop }) => {
 
         const standardResponse = await fetch('http://localhost:9999/standard_crud/read_standard/');
         const standardData = await standardResponse.json();
-        // setStandards(standardData);
+        setStandards(standardData);
 
         const entranceResponse = await fetch('http://localhost:9999/entrance_crud/read_entrance/');
         const entranceData = await entranceResponse.json();
@@ -45,7 +45,7 @@ const StudentModal = ({ setShowModal,student_data_prop }) => {
         console.error('Error fetching dropdown data:', error);
       }
     };
-    
+
     fetchDropdownData();
   }, []);
 
@@ -139,38 +139,33 @@ let data = [];
             {console.log("student_data_prop",student_data_prop)}
             <option value="">Select Branch</option>
             {branches.map((branchData) => (
-                branchData.id == student?.branch_id ?  <option key={branchData.id} selected value={branchData.branch}>
-                {branchData.branch}
-              </option>:
-              <option key={branchData.id} value={branchData.branch}>
-              {branchData.branch}
-            </option>
-              // <option key={branchData.id} value={branchData.branch}>
-              //   {branchData.branch}
-              // </option>
+               <option key={branchData.id} value={branchData.id}>
+               {branchData.branch}
+             </option>
+
             ))}
           </select>
         </div>
 
         {/* Standard Dropdown */}
-        {/* <div className="p-2">
+        <div className="p-2">
           <label>Standard:</label>
           <select
             name="standard_name"
-            // value={data[0].standard_name}
+            value={student_data_prop?.standard_id}
             onChange={handleChange}
             className="form-control"
-          > */}
-            {/* <option value="">Select Standard</option>
-            {standards.map((standard) => (
-              <option key={standard.id} value={standard.std}>
-                {standard.std}
+          >
+            <option value="">Select Standard</option>
+            {standards.map((standardData) => (
+              <option key={standardData.id} value={standardData.id}>
+                {standardData.std}
               </option>
-            ))} */}
-          {/* </select>
-        </div> */}
+            ))}
+          </select>
+        </div>
 
-        {/* Entrance Dropdown */}
+        {/* {/* Entrance Dropdown */}
         {/* <div className="p-2">
           <label>Entrance:</label>
           <select
