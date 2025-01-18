@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const StudentModal = ({ setShowModal,student_data_prop }) => {
-  // console.log(student)
+  console.log("student_data_prop test",student_data_prop);
 
   const [branches, setBranches] = useState([]);
   const [standards, setStandards] = useState([]);
-  // const [entrances, setEntrances] = useState([]);
-  // const [streams, setStreams] = useState([]);
+  const [entrances, setEntrances] = useState([]);
+  const [streams, setStreams] = useState([]);
+  const [dataStudents,setDataTest] = useState(student_data_prop);
 
   // const [updatedStudent, setUpdatedStudent] = useState({
   //   student_name: student.student_name,
@@ -36,11 +37,11 @@ const StudentModal = ({ setShowModal,student_data_prop }) => {
 
         const entranceResponse = await fetch('http://localhost:9999/entrance_crud/read_entrance/');
         const entranceData = await entranceResponse.json();
-        // setEntrances(entranceData);
+        setEntrances(entranceData);
 
         const streamResponse = await fetch('http://localhost:9999/stream_crud/read_stream/');
         const streamData = await streamResponse.json();
-        // setStreams(streamData);
+        setStreams(streamData);
       } catch (error) {
         console.error('Error fetching dropdown data:', error);
       }
@@ -101,8 +102,12 @@ let data = [];
           <input
             type="text"
             name="student_name"
-            // value={data[0].student_name}
-            onChange={handleChange}
+            value={dataStudents.student_name}
+            onChange={(event)=>{
+              setDataTest((prev)=>{
+                return {...prev,student_name:event.target.value}
+              });
+            }}
             className="form-control"
           />
         </div>
@@ -132,7 +137,7 @@ let data = [];
           <label>Branch:</label>
           <select
             name="branch_name"
-            value={student_data_prop?.branch_id}
+            value={dataStudents?.branch_id}
             onChange={handleChange}
             className="form-control"
           >
@@ -152,7 +157,7 @@ let data = [];
           <label>Standard:</label>
           <select
             name="standard_name"
-            value={student_data_prop?.standard_id}
+            value={dataStudents?.standard_id}
             onChange={handleChange}
             className="form-control"
           >
@@ -166,41 +171,41 @@ let data = [];
         </div>
 
         {/* {/* Entrance Dropdown */}
-        {/* <div className="p-2">
+        <div className="p-2">
           <label>Entrance:</label>
           <select
             name="entrance_name"
-            // value={data[0].entrance_name}
+            value={dataStudents?.entrance_id}
 
             onChange={handleChange}
             className="form-control"
-          > */}
-            {/* <option value="">Select Entrance</option>
+          >
+             <option value="">Select Entrance</option>
             {entrances.map((entrance) => (
-              <option key={entrance.id} value={entrance.entrance}>
+              <option key={entrance.id} value={entrance.id}>
                 {entrance.entrance}
               </option>
-            ))} */}
-          {/* </select>
-        </div> */}
+            ))}
+          </select>
+        </div>
 
         {/* Stream Dropdown */}
-        {/* <div className="p-2">
+        <div className="p-2">
           <label>Stream:</label>
           <select
             name="stream_name"
-            // value={data[0].stream_name}
+            value={dataStudents?.stream_id}
             onChange={handleChange}
             className="form-control"
-          > */}
-            {/* <option value="">Select Stream</option>
+          > 
+             <option value="">Select Stream</option>
             {streams.map((stream) => (
-              <option key={stream.id} value={stream.stream}>
+              <option key={stream.id} value={stream.id}>
                 {stream.stream}
               </option>
-            ))} */}
-          {/* </select>
-        </div>  */}
+            ))} 
+          </select>
+        </div> 
 
         <button type="button" className="btn btn-success mt-3 me-3" onClick={()=>{handleSaveChanges()}}>
           Save Changes
