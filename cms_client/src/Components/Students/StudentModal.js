@@ -111,12 +111,12 @@ let data = [];
             className="form-control"
           />
         </div>
-        {/* <div className="p-2">
+        <div className="p-2">
           <label>Email:</label>
           <input
             type="email"
             name="student_email"
-            // value={data[0].student_email}
+            value={dataStudents.student_email}
             onChange={handleChange}
             className="form-control"
           />
@@ -126,7 +126,7 @@ let data = [];
           <input
             type="text"
             name="student_mobile"
-            // value={data[0].student_mobile}
+            value={dataStudents.student_mobile}
             onChange={handleChange}
             className="form-control"
           />

@@ -9,7 +9,7 @@ async function main(req, res) {
 
 
     // const query=`select * from student_details where id=$1;`
-    const query=`select id ,student_name,branch_id,standard_id,entrance_id,stream_id from student_details where id=$1;`
+    const query=`select id ,student_name,student_email,student_mobile,branch_id,standard_id,entrance_id,stream_id from student_details where id=$1;`
 
     const result = await client.query(query,[id]);
     // console.log(`Data fetched successfully: ${JSON.stringify(result.rows, null, 2)}`);
